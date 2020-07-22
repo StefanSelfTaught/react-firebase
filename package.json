@@ -1,0 +1,25 @@
+{
+  "name": "InternApp",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "parcel serve ./public/index.html",
+    "build": "parcel build ./public/index.html"
+  },
+  "browserslist": "> 0.2%",
+  "keywords": [],
+  "author": "Pop Stefan",
+  "license": "MIT",
+  "devDependencies": {
+    "parcel": "^2.0.0-beta.1"
+  },
+  "dependencies": {
+    "evergreen-ui": "^4.28.1",
+    "firebase": "^7.16.1",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-hook-form": "^6.0.8",
+    "react-router-dom": "^5.2.0"
+  }
+}
