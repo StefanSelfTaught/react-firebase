@@ -1,5 +1,5 @@
 import React from "react";
-import { Switch, Route, useLocation } from "react-router-dom";
+import { Switch, Route, useLocation, Redirect } from "react-router-dom";
 import Navbar from "./components/Navbar.component.jsx";
 import PrivateRoute from "./components/PrivateRoute.component.jsx";
 import AuthenticationPage from "./pages/Authentication.component.jsx";
@@ -13,6 +13,9 @@ const App = () => {
     <>
       {location.pathname !== "/authentication" ? <Navbar /> : null}
       <Switch>
+        <Route exact path="/">
+          <Redirect to="/dashboard" />
+        </Route>
         <PrivateRoute exact path="/dashboard">
           <DashboardPage />
         </PrivateRoute>
