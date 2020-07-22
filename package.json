@@ -6,7 +6,9 @@
     "start": "parcel serve ./public/index.html",
     "build": "parcel build ./public/index.html"
   },
-  "browserslist": "> 0.2%",
+  "browserslist": [
+    "last 1 Chrome version"
+  ], 
   "keywords": [],
   "author": "Pop Stefan",
   "license": "MIT",
