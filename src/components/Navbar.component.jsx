@@ -17,7 +17,7 @@ const Navbar = () => {
         <Button onClick={() => history.push('/services')} height={40} appearance="minimal">Services</Button>
       </Pane>
       <Pane alignItems="center" display="flex">
-        <Text size={500}>Logged in as {currentUser?.displayName}</Text>
+        <Text size={500}>Logged in as {!!currentUser ? currentUser.displayName : 'Loading'}</Text>
         <Button
           marginLeft={16}
           onClick={() => firebase.auth().signOut()}
