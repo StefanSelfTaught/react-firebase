@@ -13,10 +13,9 @@ const config = {
   appId: process.env.FIREBASE_APP_ID
 }
 
-firebase.initializeApp(config);
+export default firebase.initializeApp(config);
 
 export const db = firebase.firestore();
 
 export const storage = firebase.storage();
 
-export default firebase;
