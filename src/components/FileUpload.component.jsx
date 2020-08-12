@@ -1,32 +1,29 @@
 import React, { useContext, useState } from "react";
 import { FilePicker, Button, toaster } from "evergreen-ui";
-import firebase, { storage, db } from "../firebase.utils.js";
+import { storage, db } from "../firebase.utils.js";
+import * as firebase from "firebase/app";
+import "firebase/auth";
 import { AuthContext } from "../contexts/auth.provider.jsx";
 
 const FileUpload = () => {
   const { currentUser } = useContext(AuthContext);
-  const [filesUrl, setFilesUrl] = useState(null);
+  const [fileUrl, setFileUrl] = useState(null);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     const userRef = await db.collection("users").doc(currentUser.displayName);
-    filesUrl.map(async (fileUrl) => {
-      await userRef.update({
-        files: firebase.firestore.FieldValue.arrayUnion(fileUrl),
-      });
-      toaster.success("File successfully uploaded!");
+    await userRef.update({
+      files: firebase.firestore.FieldValue.arrayUnion(fileUrl.toString()),
     });
+    toaster.success("File successfully uploaded!");
   };
 
-  const handleFileChange = (files) => {
-    let filesUrls = [];
-    files.map(async (file) => {
-      const storageRef = storage.ref();
-      const fileRef = storageRef.child(file.name);
-      await fileRef.put(file);
-      filesUrls.push(await fileRef.getDownloadURL());
-      setFilesUrl(filesUrls);
-    });
+  const handleFileChange = async (file) => {
+    const storageRef = storage.ref();
+    const fileRef = storageRef.child(file[0].name);
+    await fileRef.put(file[0]);
+    const fileUrl = await fileRef.getDownloadURL();
+    setFileUrl(fileUrl);
   };
 
   return (
