@@ -13,7 +13,7 @@
   "author": "Pop Stefan",
   "license": "MIT",
   "devDependencies": {
-    "parcel": "^2.0.0-beta.1"
+    "parcel": "^2.8.2"
   },
   "dependencies": {
     "evergreen-ui": "^4.28.1",
